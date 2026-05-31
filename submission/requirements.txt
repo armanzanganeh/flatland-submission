@@ -1,1 +1,2 @@
 flatland-rl==4.2.5
+flatland-baselines @ git+https://github.com/flatland-association/flatland-baselines.git
