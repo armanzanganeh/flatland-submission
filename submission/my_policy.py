@@ -1,6 +1,7 @@
 import heapq
 from typing import Any, List, Dict
 from flatland.envs.rail_env_action import RailEnvActions
+from flatland.envs.RailEnvPolicy import RailEnvPolicy
 
 
 def a_star_search(env, start_pos, start_dir, target_pos, blocked=set()):
@@ -45,19 +46,17 @@ def get_priority(agent):
     return abs(agent.position[0]-agent.target[0]) + abs(agent.position[1]-agent.target[1])
 
 
-class MyPolicy:
+class MyPolicy(RailEnvPolicy):
     def __init__(self):
         self.agent_paths = {}
         self.last_positions = {}
         self.stuck_counter = {}
-        self.env = None
         self.STUCK_LIMIT = 3
 
     def act_many(self, handles: List[int], observations: List[Any], **kwargs) -> Dict[int, RailEnvActions]:
-        env = kwargs.get('env', self.env)
-        if env is not None:
-            self.env = env
-        env = self.env
+        env = kwargs.get('env')
+        if env is None:
+            return {a: RailEnvActions.MOVE_FORWARD for a in handles}
 
         actions = {}
         occupied = {tuple(ag.position) for ag in env.agents if ag.position is not None}
@@ -71,7 +70,6 @@ class MyPolicy:
             if state in (0, 5, 6, 7):
                 actions[a] = RailEnvActions.DO_NOTHING
                 continue
-
             if state == 1:
                 actions[a] = RailEnvActions.MOVE_FORWARD
                 continue
