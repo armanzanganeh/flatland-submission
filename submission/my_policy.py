@@ -1,2 +1,2 @@
-from flatland_baselines.deadlock_avoidance_heuristic.policy.deadlock_avoidance_policy import DeadlockAvoidanceHeuristics
+from submission.deadlock_avoidance_heuristic.policy.deadlock_avoidance_policy import DeadlockAvoidanceHeuristics
 MyPolicy = DeadlockAvoidanceHeuristics

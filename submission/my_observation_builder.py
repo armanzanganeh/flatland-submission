@@ -1,2 +1,2 @@
-from flatland_baselines.deadlock_avoidance_heuristic.observation.full_env_observation import FullEnvObservation
+from submission.deadlock_avoidance_heuristic.observation.full_env_observation import FullEnvObservation
 MyObservationBuilder = FullEnvObservation
