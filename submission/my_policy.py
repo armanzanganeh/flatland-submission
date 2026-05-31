@@ -54,7 +54,7 @@ class MyPolicy(RailEnvPolicy):
         self.STUCK_LIMIT = 3
 
     def act_many(self, handles: List[int], observations: List[Any], **kwargs) -> Dict[int, RailEnvActions]:
-        env = kwargs.get('env')
+        env = observations[0] if observations and hasattr(observations[0], 'agents') else None
         if env is None:
             return {a: RailEnvActions.MOVE_FORWARD for a in handles}
 
