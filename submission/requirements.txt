@@ -1,1 +1,2 @@
+flatland-rl==4.2.5
 numpy>=1.24.0
