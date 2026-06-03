@@ -1,2 +1,4 @@
-from submission.deadlock_avoidance_heuristic.observation.full_env_observation import FullEnvObservation
-MyObservationBuilder = FullEnvObservation
+from flatland.core.env_observation_builder import DummyObservationBuilder
+
+# استفاده از سریع‌ترین آبزرویشن ممکن (بدون محاسبات اضافی)
+MyObservationBuilder = DummyObservationBuilder
